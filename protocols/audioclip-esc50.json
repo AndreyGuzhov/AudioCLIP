@@ -1,0 +1,108 @@
+{
+  "Visdom": {
+    "host": null,
+    "port": null,
+    "env_path": null
+  },
+  "Setup": {
+    "name": "Multimodal-Audio",
+    "suffix": "CV1",
+    "batch_train": 64,
+    "batch_test": 64,
+    "workers_train": 4,
+    "workers_test": 4,
+    "epochs": 50,
+    "log_interval": 10,
+    "saved_models_path": "/path/to/saved/models"
+  },
+  "Model": {
+    "class": "model.audioclip.AudioCLIP",
+    "args": {
+      "multilabel": false,
+      "pretrained": "/path/to/assets/trained_AudioCLIP.pt"
+    }
+  },
+  "Optimizer": {
+    "class": "torch.optim.SGD",
+    "args": {
+      "lr": 5e-5,
+      "momentum": 0.9,
+      "nesterov": true,
+      "weight_decay": 5e-4
+    }
+  },
+  "Scheduler": {
+    "class": "torch.optim.lr_scheduler.ExponentialLR",
+    "args": {
+      "gamma": 0.96
+    }
+  },
+  "Dataset": {
+    "class": "utils.datasets.ESC50",
+    "args": {
+      "dl_shuffle": true,
+      "root": "/path/to/ESC50",
+      "sample_rate": 44100,
+      "fold": 1,
+      "training": {"key": "train", "yes": true, "no": false}
+    }
+  },
+  "Transforms": [
+    {
+      "class": "utils.transforms.ToTensor1D",
+      "args": {}
+    },
+    {
+      "class": "utils.transforms.RandomFlip",
+      "args": {"p": 0.5},
+      "test": false
+    },
+    {
+      "class": "utils.transforms.RandomScale",
+      "args": {"max_scale": 1.50},
+      "test": false
+    },
+    {
+      "class": "utils.transforms.RandomPadding",
+      "args": {"out_len": 220500},
+      "test": false
+    },
+    {
+      "class": "utils.transforms.RandomCrop",
+      "args": {"out_len": 220500},
+      "test": false
+    },
+    {
+      "class": "utils.transforms.RandomNoise",
+      "args": {"snr_min_db": 10.0, "snr_max_db": 120.0, "p": 0.25},
+      "test": false
+    },
+    {
+      "class": "utils.transforms.RandomPadding",
+      "args": {"out_len": 220500, "train": false},
+      "train": false
+    },
+    {
+      "class": "utils.transforms.RandomCrop",
+      "args": {"out_len": 220500, "train": false},
+      "train": false
+    }
+  ],
+  "Metrics": {
+    "Performance": {
+      "window_name": null,
+      "x_label": "#Epochs",
+      "y_label": "Accuracy",
+      "width": 1890,
+      "height": 416,
+      "lines": [
+        {
+          "line_label": "Val. Acc.",
+          "class": "ignite.metrics.Accuracy",
+          "args": {},
+          "is_checkpoint": true
+        }
+      ]
+    }
+  }
+}
