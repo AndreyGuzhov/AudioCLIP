@@ -21,6 +21,13 @@ Further it sets new baselines in the zero-shot ESC-task on the same datasets (68
 Finally, we also assess the cross-modal querying performance of the proposed model as well as the influence of full and partial training on the results.
 For the sake of reproducibility, our code is published.
 
+### Downloading Pre-Trained Weights
+
+The pre-trained model can be downloaded from the [releases](https://github.com/AndreyGuzhov/AudioCLIP/releases).
+
+    # AudioCLIP trained on AudioSet (text-, image- and audio-head simultaneously)
+    wget https://github.com/AndreyGuzhov/AudioCLIP/releases/download/v0.1/AudioCLIP-Full-Training.pt
+
 ### How to Run the Model
 
 The required Python version is >= 3.7.
