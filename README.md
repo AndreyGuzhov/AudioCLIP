@@ -1,8 +1,10 @@
 # AudioCLIP
 ## Extending [CLIP](https://github.com/openai/CLIP) to Image, Text and Audio
 
+![Overview of AudioCLIP](images/AudioCLIP-Structure.png)
+
 This repository contains implementation of the models described in the paper [arXiv:2106.13043](https://arxiv.org/abs/2106.13043).
-This work based on our previous works:
+This work is based on our previous works:
 * [ESResNe(X)t-fbsp: Learning Robust Time-Frequency Transformation of Audio (2021)](https://github.com/AndreyGuzhov/ESResNeXt-fbsp).
 * [ESResNet: Environmental Sound Classification Based on Visual Domain Models (2020)](https://github.com/AndreyGuzhov/ESResNet).
 
@@ -27,6 +29,15 @@ The pre-trained model can be downloaded from the [releases](https://github.com/A
 
     # AudioCLIP trained on AudioSet (text-, image- and audio-head simultaneously)
     wget https://github.com/AndreyGuzhov/AudioCLIP/releases/download/v0.1/AudioCLIP-Full-Training.pt
+
+#### Important Note
+If you use AudioCLIP as a part of GAN-based image generation, please consider downloading the [partially](https://github.com/AndreyGuzhov/AudioCLIP/releases/download/v0.1/AudioCLIP-Partial-Training.pt) trained model, as its audio embeddings are compatible with the vanilla [CLIP](https://openaipublic.azureedge.net/clip/models/afeb0e10f9e5a86da6080e35cf09123aca3b358a0c3e3b6c78a7b63bc04b6762/RN50.pt) (based on ResNet-50).
+
+### Demo on Use Cases
+
+Jupyter Notebook with sample use cases is available under the [link](demo/AudioCLIP.ipynb).
+
+![Overview of AudioCLIP](images/AudioCLIP-Workflow.png)
 
 ### How to Run the Model
 
