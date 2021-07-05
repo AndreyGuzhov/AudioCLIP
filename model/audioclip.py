@@ -157,7 +157,7 @@ class AudioCLIP(CLIP):
 
         if text is not None:
             if batch_indices is None:
-                batch_indices = torch.arange(len(text), dtype=self.dtype, device=self.device)
+                batch_indices = torch.arange(len(text), dtype=torch.int64, device=self.device)
 
             text_features = self.encode_text(text, '{}', batch_indices)
             text_features = text_features / text_features.norm(dim=-1, keepdim=True)
