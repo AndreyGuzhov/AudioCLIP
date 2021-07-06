@@ -36,6 +36,7 @@ If you use AudioCLIP as a part of GAN-based image generation, please consider do
 ### Demo on Use Cases
 
 Jupyter Notebook with sample use cases is available under the [link](demo/AudioCLIP.ipynb).
+The same Notebook is available on Google Colab [here](https://colab.research.google.com/github/AndreyGuzhov/AudioCLIP/blob/master/demo/AudioCLIP.ipynb).
 
 ![Overview of AudioCLIP](images/AudioCLIP-Workflow.png)
 
