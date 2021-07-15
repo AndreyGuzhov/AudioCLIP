@@ -51,6 +51,10 @@ The required Python version is >= 3.7.
 ##### On the [UrbanSound8K](https://urbansounddataset.weebly.com/) dataset
     python main.py --config protocols/audioclip-us8k.json --Dataset.args.root /path/to/UrbanSound8K
 
+### More About AudioCLIP
+
+[The AI Epiphany](https://www.youtube.com/channel/UCj8shE7aIn4Yawwbo2FceCQ) channel made a great video about AudioCLIP. Learn more [here](https://www.youtube.com/watch?v=3SLQVh9ABDM).
+
 ### Cite Us
 
 ```
